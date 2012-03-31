@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Common Carousel</title>
+<style type="text/css">
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+}
+h1.title {
+	background-color:#FFFFCC;
+	border:1px solid #c3c3c3;
+	padding:10px;
+	display:block;
+}
+.hand {
+	cursor:pointer
+}
+.box {
+	background:#000;
+	padding:10px;
+	height:200px;
+	width:500px;
+	margin:0 10px 0 0;
+	float:left
+}
+.box h1 {
+	color:#999999;
+	background:#000;
+}
+.coutnerRow {
+	clear:both;
+	padding:10px;
+}
+
+.coutnerRow ul, .coutnerRow ul li {
+	list-style:none;
+	list-style-image:none;
+	margin:0;
+	padding:0
+}
+.coutnerRow ul li {
+	margin-right:10px;
+	display:inline;
+	cursor:pointer;
+	padding:5px;
+	background-color:#fff;
+}
+.coutnerRow ul li.active {
+	margin-right:10px;
+	display:inline;
+	cursor:pointer;
+	padding:5px;
+	background-color:#ccc;
+}
+#next, #previous{width:40px; text-align:center}
+.mstoplinks{padding:3px; border-bottom:2px solid #c3c3c3;}
+.mstoplinks a, .mstoplinks a:visited{color:#003366; text-decoration:none; border-right:1px solid #c3c3c3; padding:0 10px}
+.mstoplinks a.active, .mstoplinks a.active:visited{color:#003366; text-decoration:none; border-right:1px solid #c3c3c3; padding:0 10px;border-bottom:1px solid #c3c3c3; border-left:1px solid #c3c3c3; }
+.version{font-size:12px; color:#EE3C95;}
+
+</style>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.msCarousel-min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/mscarousel.css" />
+</head>
+<body>
+<div style="clear:both" class="mstoplinks">
+	<p><a href="index.html">Normal - Horizontal & Vertical</a> &nbsp;<a href="carousel-hidden-feature.html">Hidden Feature</a>&nbsp;<a href="autoScroll.html">Auto Scroll</a>&nbsp;<a href="carousel-nested.html">Nested Carousel</a>&nbsp;<a href="carousel-with-number.html" class="active">Carousel with number</a>&nbsp;<a href="gallery.html">Carousel - Big Image Gallery</a>&nbsp;<a href="http://www.marghoobsuleman.com/jquery-ms-carousel">Help</a></p>
+</div>
+<h1>jQuery Carousel with counters <sup id="ver" class="version"></sup></h1>
+<div id="mycarousel">
+  <div class="box">
+    <h1>01</h1>
+  </div>
+  <div class="box">
+    <h1>02</h1>
+  </div>
+  <div class="box">
+    <h1>03</h1>
+  </div>
+  <div class="box">
+    <h1>04</h1>
+  </div>
+  <div class="box">
+    <h1>05</h1>
+  </div>
+  <div class="box">
+    <h1>06</h1>
+  </div>
+  <div class="box">
+    <h1>07</h1>
+  </div>
+  <div class="box">
+    <h1>08</h1>
+  </div>
+  <div class="box">
+    <h1>09</h1>
+  </div>
+  <div class="box">
+    <h1>10</h1>
+  </div>
+</div>
+<div class="coutnerRow">
+  <ul id="counter">
+  	<li class="buttons" id="lileft"><input name="previous" id="previous" type="button" value="&#8249;" /> </li>
+    
+    <li class="buttons">
+    <input name="next" id="next" type="button" value="&#8250;" />
+    </li>
+  </ul>
+</div>
+
+<script type="text/javascript">
+function highlightNo(arg) {
+		var caller = arg;
+		var number = caller.getCurrentID();
+		if(number==0) {
+			$("#previous").attr("disabled", "disabled");
+			$("#next").removeAttr("disabled");
+		} else {
+			$("#next, #previous").removeAttr("disabled");
+		}
+		
+		$("#counter li").removeClass("active");
+		$("#counter li:eq("+(number+1)+")").addClass("active");
+}			
+$(document).ready(function() {
+   mcarousel = $("#mycarousel").msCarousel({boxClass:'div.box', height:200, width:520, callback:highlightNo, autoSlide:3000}).data("msCarousel");
+   //add event on number
+	$("#next").click(function() {
+		mcarousel.next();
+	});
+	$("#previous").click(function() {
+		mcarousel.previous();
+	});	   
+	$("#next, #previous").attr("disabled","disabled");
+	
+	//li
+	var html = mcarousel.getNumbers(true, '', '');
+	$("#lileft").after(html);
+	
+	 $("#counter li:not('.buttons')").click(function() {
+   		if(mcarousel!=undefined) {
+			var no = $(this).html();
+			mcarousel.goto(parseInt(no)-1);
+		}
+   });
+   $("#counter li, #next, #previous").mouseover(function() {
+   		if(mcarousel!=undefined) {
+			mcarousel.pause();
+		}
+   });
+   $("#counter li, #next, #previous").mouseout(function() {
+   		if(mcarousel!=undefined) {
+			mcarousel.play();
+		}
+   });
+   	//no use
+	$("#ver").html("v"+mcarousel.getVersion());	
+})
+</script>
+
+</body>
+</html>

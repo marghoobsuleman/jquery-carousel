@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Gallery</title>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.msCarousel-min.js"></script>
+<link type="text/css" href="css/mscarousel.css" rel="stylesheet" />
+<style type="text/css">
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+}
+.mainGallery {
+	background:#000;
+	color:#fff;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	width:1100px;
+	margin:0 auto
+}
+.mainGallery h2 {
+	font-size:20px;
+	color:#fff;
+	margin:0;
+	padding:3px 0
+}
+.mainGallery h5 {
+	font-size:11px;
+	color:#fff;
+	margin:0;
+	padding:3px 0 0;
+	font-weight:normal
+}
+.mainGallery .left, .mainGallery .right {
+	width:50px;
+	padding:10px;
+}
+.mainGallery .imgCaption {
+	float:right;
+	font-size:14px;
+	width:340px;
+	color:#a5a2a2;
+	padding-top:25px;
+	padding-left:10px
+}
+.mainGallery .imgImage {
+	float:left;
+	width:550px;
+}
+.mainGallery .middleContent {
+	padding:10px 0
+}
+.mainGallery .borderLR {
+	border-left:1px solid #333;
+	border-right:1px solid #333;
+}
+.mainGallery .message {
+	display:block
+}
+.message {
+	display:none
+}
+.mainGallery .nextPreviousBig {
+	position:relative;
+	height:41px;
+	width:33px;
+	background:url(images/slideshow-arrow-big.gif) no-repeat;
+	text-indent:-999999px;
+}
+.mainGallery .nextBig {
+	background-position:-33px 0;
+	float:right
+}
+.mainGallery .previousBig {
+	background-position:0 0;
+	float:left;
+}
+.mainGallery .disableBigP {
+	background-position:0 -41px !important;
+	float:left;
+	cursor:default
+}
+.mainGallery .disableBigN {
+	background-position:-33px -41px !important;
+	float:right;
+	cursor:default
+}
+.mainGallery .nextPrevious {
+	position:relative;
+	height:41px;
+	width:33px;
+	background:url(images/slideshow-arrow-gray.gif) no-repeat;
+	text-indent:-999999px;
+}
+.mainGallery .next {
+	background-position:-33px 0;
+	float:right;
+}
+.mainGallery .previous {
+	background-position:0 0;
+	float:left;
+	left:10px
+}
+.mainGallery .disableP {
+	background-position:0 -41px !important;
+	float:left;
+	cursor:default
+}
+.mainGallery .disableN {
+	background-position:-33px -41px !important;
+	float:right;
+	cursor:default
+}
+.mainGallery .footer {
+	background:#3f3f3f;
+}
+.mainGallery .gallerythumb {
+	list-style:none;
+	list-style-type:none;
+	float:left;
+	padding:0;
+	margin:0
+}
+.mainGallery li {
+	display:inline;
+	margin-right:15px;
+	text-align:center;
+	float:left;
+	position:relative
+}
+.mainGallery li img {
+	margin-bottom:-3px;
+	border:1px solid #4a4949;
+}
+.mainGallery li.active img {
+	margin-bottom:-3px;
+	border:2px solid #000;
+}
+:focus {
+	border:none;
+	outline:none
+}
+.clear {
+	clear:both
+}
+/**** override ********/
+.mainGallery .imgImage {
+	text-align:center;
+}
+.mstoplinks{padding:3px; border-bottom:2px solid #c3c3c3;}
+.mstoplinks a, .mstoplinks a:visited{color:#003366; text-decoration:none; border-right:1px solid #c3c3c3; padding:0 10px}
+.mstoplinks a.active, .mstoplinks a.active:visited{color:#003366; text-decoration:none; border-right:1px solid #c3c3c3; padding:0 10px;border-bottom:1px solid #c3c3c3; border-left:1px solid #c3c3c3; }
+.version{font-size:12px; color:#EE3C95;}
+
+</style>
+</head>
+<body>
+<div style="clear:both" class="mstoplinks">
+	<p><a href="index.html">Normal - Horizontal & Vertical</a> &nbsp;<a href="carousel-hidden-feature.html">Hidden Feature</a>&nbsp;<a href="autoScroll.html">Auto Scroll</a>&nbsp;<a href="carousel-nested.html">Nested Carousel</a>&nbsp;<a href="carousel-with-number.html">Carousel with number</a>&nbsp;<a href="gallery.html" class="active">Carousel - Big Image Gallery</a>&nbsp;<a href="http://www.marghoobsuleman.com/jquery-ms-carousel">Help</a></p>
+</div>
+<h1>jQuery Carousel - Big Gallery <sup id="ver" class="version"></sup></h1>
+<div class="mainGallery">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bigtable">
+    <tr>
+      <td align="center" valign="middle" class="left"><a href="javascript:void(0)" id="imgLeftBig" class="nextPreviousBig previousBig">Previous</a></td>
+      <td class="middleContent borderLR"><div id="carouselBig">
+          <div class="set">
+            <div class="imgCaption">
+              <h2>The Bird</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_0143.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>Between the train</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_0213.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>Drink Responsibility</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_1834.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>The demon clouds</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_2703.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>Demon Clouds</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_2704.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>Crossing the path</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_2721.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>The Flood</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_2731.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>Real Net</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_2749.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>Real Web Developer</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_2751.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>Hidden Truth</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_2771.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+          <div class="set">
+            <div class="imgCaption">
+              <h2>Flower</h2>
+              <h5>Marghoob Suleman | April 17, 2010</h5>
+              <p class="message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="imgImage"><img src="images/gallery/DSC_3481.jpg" width="550" height="369" /></div>
+            <div class="clear"></div>
+          </div>
+        </div></td>
+      <td align="center" class="right"><a href="javascript:void(0)" id="imgRightBig" class="nextPreviousBig nextBig">Next</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="middle" class="left footer"><a href="javascript:void(0)" id="imgLeftThumb" class="nextPrevious previous">Previous</a></td>
+      <td class="footer middleContent"><div>
+          <ul id="carouselThumb" class="gallerythumb" style="padding-left:2px;padding-right:10px">
+            <li><img src="images/gallery/thumbs/DSC_0143.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_0213.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_1834.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_2703.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_2704.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_2721.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_2731.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_2749.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_2751.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_2771.jpg" /></li>
+            <li><img src="images/gallery/thumbs/DSC_3481.jpg" /></li>
+          </ul>
+        </div></td>
+      <td class="right footer" style="text-align:left"><a href="javascript:void(0)" id="imgRightThumb" class="nextPrevious next">Next</a></td>
+    </tr>
+  </table>
+</div>
+<p>Images are copyright to marghoob suleman.</p>
+<script type="text/javascript">
+function activateThumb(no) {
+	$("#carouselThumb li").removeClass("active");
+	$("#carouselThumb li:eq("+no+")").addClass("active");
+}
+function bigSlideControl(arg) {
+	var oBigController = arg;
+	var currentItem = oBigController.getCurrentID();
+	activateThumb(currentItem);
+	if(currentItem==0) {
+		$("#imgLeftBig").css({opacity:0.4});
+	} else {
+		$("#imgLeftBig").css({opacity:1});
+	}
+	
+	//console.debug("currentItem "+currentItem)
+	if(thumbs!=undefined) {
+		thumbs.goto(parseInt(currentItem));
+	}	
+//	alert(currentItem);
+}
+function thumbSlideControl(arg) {
+	var oController = arg;
+	var currentItem = oController.getCurrentID();
+	if(currentItem==0) {
+		$("#imgLeftThumb").css({opacity:0.4});
+	} else {
+			$("#imgLeftThumb").css({opacity:1})
+	}
+}
+
+// autoSlide:2000, 
+var oBigController = $("#carouselBig").msCarousel({width:900, height:369,callback:bigSlideControl, showMessage:true, messageOpacity:1}).data("msCarousel");
+var thumbs = $("#carouselThumb").msCarousel({boxClass:'li', width:900, height:78, callback:thumbSlideControl, scrollSpeed:500}).data("msCarousel");
+
+//big button click
+$("#imgRightBig").click(function() {
+	oBigController.next();
+});
+$("#imgLeftBig").click(function() {
+	oBigController.previous();
+})
+
+//thumb click
+$("#imgRightThumb").click(function() {
+	thumbs.next();
+});
+$("#imgLeftThumb").click(function() {
+	thumbs.previous();
+})
+
+//add click event
+$("#carouselThumb li").click(function(arg) {
+	var target = this;
+	var counter = $("#carouselThumb li").index(target);
+	oBigController.goto(parseInt(counter));
+})
+	//no use
+	$("#ver").html("v"+oBigController.getVersion());	
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Test</title>
+<link rel="stylesheet" type="text/css" href="css/mscarousel.css" />
+<script language="javascript" type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="js/jquery.msCarousel.js"></script>
+<style type="text/css">
+.mscarousel {
+	overflow-x:hidden;
+	overflow-y:hidden;
+	_overflow-x:none;
+	_overflow-y:none;
+	float:left;
+	display:inline;
+	white-space:nowrap;
+	
+}
+.mscarousel img {
+	border:0
+}
+.mscarousel .child {
+	position:relative;
+}
+.mscarousel .set {
+	float:left;
+	position:relative;
+}
+.mscarousel .set .message {
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:#333333;
+	color:#fff;
+	display:none;
+}
+.mscarousel .clear {
+	clear:both
+}
+h1 {
+	background-color:#FFFFCC;
+	border:1px solid #c3c3c3;
+	padding:10px;
+	display:block;
+}
+</style>
+</head>
+<body>
+
+<div class="mscarousel" style="border: 2px solid rgb(195, 195, 195); background-color: rgb(255, 255, 255); width: 515px; height:198px; overflow: hidden; " id="carousel">
+      <div class="set">
+      <div><img height="198" width="30" src="images/menu1-h.jpg"><img height="198" width="486" src="images/menu-img-1.jpg"></div>
+      <div class="message" style="width: 515px; display: none;">This is message box<br>
+        This is message box<br>
+        This is message box</div>
+    </div>
+    <div class="set">
+      <div><img height="198" width="30" src="images/menu2-h.jpg"><img height="198" width="486" src="images/menu-img-2.jpg"></div>
+    </div>
+    <div class="set">
+      <div><img height="198" width="30" src="images/menu3-h.jpg"><img height="198" width="486" src="images/menu-img-3.jpg"></div>
+    </div>
+    <div class="set">
+      <div><img height="198" width="30" src="images/menu4-h.jpg"><img height="198" width="486" src="images/menu-img-4.jpg"></div>
+    </div>
+    <div class="set">
+      <div><img height="198" width="30" src="images/menu5-h.jpg"><img height="198" width="486" src="images/menu-img-5.jpg"></div>
+    </div>
+    <div class="set">
+      <div><img height="198" width="30" src="images/menu6-h.jpg"><img height="198" width="486" src="images/menu-img-6.jpg"></div>
+    </div>
+    <div class="set">
+      <div><img height="198" width="30" src="images/menu7-h.jpg"><img height="198" width="486" src="images/menu-img-7.jpg"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var mc = $("#carousel").msCarousel({boxclass:'.set', defaultid:0, height:198, width:486, autoSlide:2000}).data("msCarousel");
+	alert($("#carousel > .set").length);
+	//alert(1);
+})
+</script>
+
+</body>
+</html>
