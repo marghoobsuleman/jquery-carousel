@@ -2,8 +2,8 @@
 // msCarousel - jquery.msCarousel.js
 // author: Marghoob Suleman
 // Date: 5th April, 2010, {date: 7th July, 2010, 21st Feb, 2011}
-// Revision: 27
-// Version: 1.9 {date: 23rd Mar, 2012}
+// Revision: 28
+// Version: 2.0 
 // web: www.marghoobsuleman.com
 // Example: 
 // carousel_photos = $("#photopageGallery").msCarousel({boxClass:'.bigImg', blockWidth:400, width:400, height:315, callback:managePhotosNumber, autoSlide:autoPlay, showMessage:true, messageClass:'.overlapTxt'}).data("msCarousel");
@@ -15,7 +15,7 @@
 
 ;(function($){
 	var msMyCarousel = function(element, opt) {
-		var ver = "1.9";
+		var ver = "2.0";
 		var $this = this;
 		var settings = $.extend({
 							scrollSpeed:1000,
@@ -332,6 +332,9 @@
 		};
 		this.getVersion = function() {
 			return ver;
+		};
+		this.setAutoScroll = function(i) {
+			settings.autoSlide = i;
 		};
 		//init
 		init();		
